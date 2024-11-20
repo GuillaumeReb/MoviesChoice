@@ -3,18 +3,87 @@
 {% block title %}Hello MainController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+ <!-- Section de la bannière principale -->
+<section class="relative bg-gray-900 text-black bg-cover bg-center h-[500px]" style="background-image: url('https://via.placeholder.com/1920x500');">
+    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+    <div class="relative container mx-auto h-full flex flex-col justify-center items-center text-center space-y-8 space-x-4">
+        <h1 class="text-4xl md:text-6xl font-bold">Bienvenue sur MoviesChoice</h1>
+        <p class="text-lg md:text-xl max-w-2xl">
+            Découvrez les derniers films, séries et émissions TV en un clic !
+        </p>
+        <a href="#popular" class="bg-red-500 hover:bg-red-600 text-black px-8 py-4 rounded-full text-lg font-semibold">
+            Voir les films populaires
+        </a>
+    </div>
+</section>
 
-<div class="example-wrapper">
-    <h1>Bonjour {{ controller_name }}! ✅</h1>
+    <!-- Section Films Populaires -->
+    <section id="popular" class="py-12 bg-gray-800 text-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-white mb-8">Films populaires</h2>
+            
+            <!-- Liste des films -->
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                {# Boucle à utiliser avec l'API TMDB plus tard :
+                {% for film in films %}
+                <div class="bg-gray-700 rounded-lg shadow-md overflow-hidden">
+                    <img src="{{ film.poster_path }}" alt="{{ film.title }}" class="w-full h-64 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold text-white">{{ film.title }}</h3>
+                        <p class="text-sm text-gray-400 mb-4">{{ film.release_date|date('Y') }}</p>
+                        <a href="/film/{{ film.id }}" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
+                            Détails
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+                #}
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/Guillaume/Desktop/ProjetUn/MoviesChoice/src/Controller/MainController.php</code></li>
-        <li>Your template at <code>C:/Users/Guillaume/Desktop/ProjetUn/MoviesChoice/templates/main/index.html.twig</code></li>
-    </ul>
-</div>
+                <!-- Cartes statiques -->
+                <div class="bg-gray-700 rounded-lg shadow-md overflow-hidden">
+                    <img src="https://via.placeholder.com/200x300" alt="Film 1" class="w-full h-64 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold text-white">Film 1</h3>
+                        <p class="text-sm text-gray-400 mb-4">2024</p>
+                        <a href="#" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
+                            Détails
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-gray-700 rounded-lg shadow-md overflow-hidden">
+                    <img src="https://via.placeholder.com/200x300" alt="Film 2" class="w-full h-64 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold text-white">Film 2</h3>
+                        <p class="text-sm text-gray-400 mb-4">2023</p>
+                        <a href="#" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
+                            Détails
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-gray-700 rounded-lg shadow-md overflow-hidden">
+                    <img src="https://via.placeholder.com/200x300" alt="Film 3" class="w-full h-64 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold text-white">Film 3</h3>
+                        <p class="text-sm text-gray-400 mb-4">2022</p>
+                        <a href="#" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
+                            Détails
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-gray-700 rounded-lg shadow-md overflow-hidden">
+                    <img src="https://via.placeholder.com/200x300" alt="Film 4" class="w-full h-64 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold text-white">Film 4</h3>
+                        <p class="text-sm text-gray-400 mb-4">2021</p>
+                        <a href="#" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
+                            Détails
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 {% endblock %}
