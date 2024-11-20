@@ -17,7 +17,7 @@ Lancement de la commande de vérification :```vendor/bin/phpcs```
 
 ### PHPStan
 PHPStan est un outil d'analyse statique pour PHP qui détecte les erreurs de type et les bugs potentiels dans le code avant l'exécution, en analysant le code source pour assurer sa qualité et sa robustesse. Lancement de la commande de vérification :
-```vendor/bin/phpstan analyse src tests --level=1 --memory-limit=1G -c phpstan.neon```
+```vendor/bin/phpstan analyse src --level 5``` \
 Pensez à augmenter --level=1 après chaque validation.
 
 ### Utile : 
