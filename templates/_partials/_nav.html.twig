@@ -1,0 +1,22 @@
+ {% block stylesheets %}
+ <link href="{{ asset('build/app.css') }}" rel="stylesheet">
+ {% endblock %}
+<nav class="bg-gray-900 text-white px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center space-x-4">
+        <a href="/" class="text-2xl font-bold">MoviesChoice</a>
+        <a href="#" class="hover:text-red-500">Nouveautés</a>
+        <a href="#" class="hover:text-red-500">Top Films</a>
+        <a href="#" class="hover:text-red-500">Genres</a>
+    </div>
+    <div class="flex items-center space-x-4">
+        <form method="GET" action="/search" class="relative">
+            <input 
+                type="text" 
+                name="query" 
+                placeholder="Rechercher..." 
+                class="bg-gray-800 text-white px-4 py-2 rounded-full placeholder-gray-400 focus:outline-none focus:ring focus:ring-red-500"
+            >
+        </form>
+        <a href="/login" class="hover:text-red-500">Connexion</a>
+    </div>
+</nav>
