@@ -1,0 +1,14 @@
+<h1>Séries Populaires</h1>
+
+<ul>
+	{% for serie in popularTvShows %}
+		<li>
+			<strong>{{ serie.name }}</strong>
+			({{ serie.first_air_date }})
+			<br>
+			<img src="https://image.tmdb.org/t/p/w200{{ serie.poster_path }}" alt="{{ serie.name }}">
+		</li>
+	{% else %}
+		<li>Aucune série trouvée.</li>
+	{% endfor %}
+</ul>

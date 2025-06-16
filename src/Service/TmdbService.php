@@ -10,12 +10,12 @@ class TmdbService
     private $apiKey;
 
     // Injecte le client HTTP et la clé API dans le constructeur
-    public function __construct(HttpClientInterface $client, string $apiKey = 'default_value')
+    public function __construct(HttpClientInterface $client, string $apiKey)
     {
         $this->client = $client;
         $this->apiKey = $apiKey;
 
-        if ($this->apiKey === 'default_value') {
+        if (empty($this->apiKey)) {
             throw new \Exception("API Key not resolved. Ensure TMDB_API_KEY is correctly set.");
         }
     }
@@ -44,7 +44,7 @@ class TmdbService
     public function getPopularTvShows()
     {
         // Appel à l'API pour récupérer les séries populaires
-        $response = $this->client->request('GET', 'https://api.themoviedb.org/3/serie/popular', [
+        $response = $this->client->request('GET', 'https://api.themoviedb.org/3/tv/popular', [
             'query' => [
                 'api_key' => $this->apiKey,  // Clé API
                 'language' => 'fr',           // Langue des résultats

@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MainController!
+{% endblock %}
+
+{% block body %}
+	<h1>Films Populaires</h1>
+
+	<ul>
+		{% for movie in popularMovies %}
+			<li>
+				<strong>{{ movie.title }}</strong>
+				({{ movie.release_date }})
+				<br>
+				<img src="https://image.tmdb.org/t/p/w200{{ movie.poster_path }}" alt="{{ movie.title }}">
+			</li>
+		{% else %}
+			<li>Aucun film trouvé.</li>
+		{% endfor %}
+	</ul>
+
+{% endblock %}

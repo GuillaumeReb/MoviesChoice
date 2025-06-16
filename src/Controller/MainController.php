@@ -17,10 +17,6 @@ class MainController extends AbstractController
         $this->tmdbService = $tmdbService;
     }
 
-     /**
-     * @Route("/", name="app_home")
-     */
-
     #[Route('/', name: 'app_home')]
     public function index(): Response
     {
@@ -40,4 +36,24 @@ class MainController extends AbstractController
         ]);
 
     }
+
+    #[Route('/film', name: 'app_films')]
+public function films(): Response
+{
+    $popularMovies = $this->tmdbService->getPopularMovies();
+
+    return $this->render('main/film.html.twig', [
+        'popularMovies' => $popularMovies,
+    ]);
+}
+
+#[Route('/serie', name: 'app_series')]
+public function series(): Response
+{
+    $popularTvShows = $this->tmdbService->getPopularTvShows();
+
+    return $this->render('main/serie.html.twig', [
+        'popularTvShows' => $popularTvShows,
+    ]);
+}
 }
