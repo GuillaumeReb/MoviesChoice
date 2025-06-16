@@ -1,22 +1,24 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello MainController!
+{% block title %}Films Populaires
 {% endblock %}
 
 {% block body %}
-	<h1>Films Populaires</h1>
+	<h1 class="text-3xl font-bold text-center mt-8 mb-6">🎬 Films Populaires</h1>
 
-	<ul>
-		{% for movie in popularMovies %}
-			<li>
-				<strong>{{ movie.title }}</strong>
-				({{ movie.release_date }})
-				<br>
-				<img src="https://image.tmdb.org/t/p/w200{{ movie.poster_path }}" alt="{{ movie.title }}">
-			</li>
-		{% else %}
-			<li>Aucun film trouvé.</li>
-		{% endfor %}
-	</ul>
-
+	{% if popularMovies is not empty %}
+		<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 px-4">
+			{% for movie in popularMovies %}
+				<div class="bg-white rounded-lg shadow hover:shadow-lg transition duration-300 overflow-hidden cursor-pointer">
+					<img src="https://image.tmdb.org/t/p/w300{{ movie.poster_path }}" alt="{{ movie.title }}" class="w-full h-64 object-cover transform hover:scale-105 transition duration-300">
+					<div class="p-4">
+						<h2 class="text-lg font-semibold truncate" title="{{ movie.title }}">{{ movie.title }}</h2>
+						<p class="text-sm text-gray-500">{{ movie.release_date }}</p>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	{% else %}
+		<p class="text-center text-gray-500 mt-8">Aucun film trouvé.</p>
+	{% endif %}
 {% endblock %}
