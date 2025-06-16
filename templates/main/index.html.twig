@@ -17,73 +17,41 @@
     </div>
 </section>
 
-    <!-- Section Films Populaires -->
-    <section id="popular" class="py-12 bg-gray-800 text-white">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl text-center font-bold text-white mb-8">Films populaires</h2>
-            
-            <!-- Liste des films -->
-            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
-                {# Boucle à utiliser avec l'API TMDB plus tard :
-                {% for film in films %}
-                <div class="bg-gray-700 rounded-lg shadow-md overflow-hidden">
-                    <img src="{{ film.poster_path }}" alt="{{ film.title }}" class="w-full h-64 object-cover">
+ <!-- Films populaires -->
+    <section id="popular-movies" class="mt-12">
+        <h2 class="text-3xl font-semibold mb-6">Films Populaires</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {% for movie in popularMovies %}
+                <div class="bg-gray-800 text-white rounded-lg overflow-hidden">
+                    <img src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}" alt="{{ movie.title }}" class="w-full h-64 object-cover">
                     <div class="p-4">
-                        <h3 class="text-lg font-semibold text-white">{{ film.title }}</h3>
-                        <p class="text-sm text-gray-400 mb-4">{{ film.release_date|date('Y') }}</p>
-                        <a href="/film/{{ film.id }}" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
-                            Détails
-                        </a>
+                        <h3 class="text-xl font-semibold">{{ movie.title }}</h3>
+                        <p class="text-sm text-gray-400 mt-2">{{ movie.overview|slice(0, 150) ~ '...' }}</p>
                     </div>
                 </div>
-                {% endfor %}
-                #}
-
-                <!-- Cartes statiques -->
-                <div class="bg-gray-700 rounded-lg shadow-md overflow-hidden">
-                    <img src="https://via.placeholder.com/200x300" alt="Film 1" class="w-full h-64 object-cover">
-                    <div class="p-4">
-                        <h3 class="text-lg font-semibold text-white">Film 1</h3>
-                        <p class="text-sm text-gray-400 mb-4">2024</p>
-                        <a href="#" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
-                            Détails
-                        </a>
-                    </div>
-                </div>
-
-                <div class="bg-gray-700 rounded-lg shadow-md overflow-hidden">
-                    <img src="https://via.placeholder.com/200x300" alt="Film 2" class="w-full h-64 object-cover">
-                    <div class="p-4">
-                        <h3 class="text-lg font-semibold text-white">Film 2</h3>
-                        <p class="text-sm text-gray-400 mb-4">2023</p>
-                        <a href="#" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
-                            Détails
-                        </a>
-                    </div>
-                </div>
-
-                <div class="bg-gray-700 rounded-lg shadow-md overflow-hidden">
-                    <img src="https://via.placeholder.com/200x300" alt="Film 3" class="w-full h-64 object-cover">
-                    <div class="p-4">
-                        <h3 class="text-lg font-semibold text-white">Film 3</h3>
-                        <p class="text-sm text-gray-400 mb-4">2022</p>
-                        <a href="#" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
-                            Détails
-                        </a>
-                    </div>
-                </div>
-
-                <div class="bg-gray-700 rounded-lg shadow-md overflow-hidden">
-                    <img src="https://via.placeholder.com/200x300" alt="Film 4" class="w-full h-64 object-cover">
-                    <div class="p-4">
-                        <h3 class="text-lg font-semibold text-white">Film 4</h3>
-                        <p class="text-sm text-gray-400 mb-4">2021</p>
-                        <a href="#" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
-                            Détails
-                        </a>
-                    </div>
-                </div>
-            </div>
+            {% else %}
+                <p>Aucun film trouvé.</p>
+            {% endfor %}
         </div>
     </section>
+
+    <!-- Séries populaires -->
+    <section id="popular-tv" class="mt-12">
+        <h2 class="text-3xl font-semibold mb-6">Séries Populaires</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {% for tvShow in popularTvShows %}
+                <div class="bg-gray-800 text-white rounded-lg overflow-hidden">
+                    <img src="https://image.tmdb.org/t/p/w500{{ tvShow.poster_path }}" alt="{{ tvShow.name }}" class="w-full h-64 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold">{{ tvShow.name }}</h3>
+                        <p class="text-sm text-gray-400 mt-2">{{ tvShow.overview|slice(0, 150) ~ '...' }}</p>
+                    </div>
+                </div>
+            {% else %}
+                <p>Aucune série trouvée.</p>
+            {% endfor %}
+        </div>
+
+   
+    
 {% endblock %}
