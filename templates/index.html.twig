@@ -1,57 +1,57 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello MainController!{% endblock %}
+{% block title %}Hello MainController!
+{% endblock %}
 
 {% block body %}
- <!-- Section de la bannière principale -->
-<section class="relative bg-gray-900 text-black bg-cover bg-center h-[500px]" style="background-image: url('https://via.placeholder.com/1920x500');">
-    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
-    <div class="relative container mx-auto h-full flex flex-col justify-center items-center text-center space-y-8 space-x-4">
-        <h1 class="text-4xl md:text-6xl font-bold">Bienvenue sur MoviesChoice</h1>
-        <p class="text-lg md:text-xl max-w-2xl">
-            Découvrez les derniers films, séries et émissions TV en un clic !
-        </p>
-        <a href="#popular" class="bg-red-500 hover:bg-red-600 text-black px-8 py-4 rounded-full text-lg font-semibold">
-            Voir les films populaires
-        </a>
-    </div>
-</section>
+	<!-- Section de la bannière principale -->
+	<section class="relative bg-gray-900 text-black bg-cover bg-center h-[500px]" style="background-image: url('https://via.placeholder.com/1920x500');">
+		<div class="absolute inset-0 bg-black bg-opacity-50"></div>
+		<div class="relative container mx-auto h-full flex flex-col justify-center items-center text-center space-y-8 space-x-4">
+			<h1 class="text-4xl text-white md:text-6xl font-bold">Bienvenue sur MoviesChoice</h1>
+			<p class="text-lg text-white md:text-xl max-w-2xl">
+				Découvrez les derniers films, séries et émissions TV en un clic !
+			</p>
+			{# <a href="#popular" class="bg-red-500 hover:bg-red-600 text-black px-8 py-4 rounded-full text-lg font-semibold">
+							Voir les films populaires
+						</a> #}
+		</div>
+	</section>
 
- <!-- Films populaires -->
-    <section id="popular-movies" class="mt-12">
-        <h2 class="text-3xl font-semibold mb-6">Films Populaires</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {% for movie in popularMovies %}
-                <div class="bg-gray-800 text-white rounded-lg overflow-hidden">
-                    <img src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}" alt="{{ movie.title }}" class="w-full h-64 object-cover">
-                    <div class="p-4">
-                        <h3 class="text-xl font-semibold">{{ movie.title }}</h3>
-                        <p class="text-sm text-gray-400 mt-2">{{ movie.overview|slice(0, 150) ~ '...' }}</p>
-                    </div>
-                </div>
-            {% else %}
-                <p>Aucun film trouvé.</p>
-            {% endfor %}
-        </div>
-    </section>
+	<!-- Films populaires -->
+	<section id="popular-movies" class="mt-12">
+		<h2 class="text-3xl font-semibold mb-6">Films Populaires</h2>
+		<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+			{% for movie in popularMovies %}
+				<div class="bg-gray-800 text-white rounded-lg overflow-hidden">
+					<img src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}" alt="{{ movie.title }}" class="w-full h-64 object-cover">
+					<div class="p-4">
+						<h3 class="text-xl font-semibold">{{ movie.title }}</h3>
+						<p class="text-sm text-gray-400 mt-2">{{ movie.overview|slice(0, 150) ~ '...' }}</p>
+					</div>
+				</div>
+			{% else %}
+				<p>Aucun film trouvé.</p>
+			{% endfor %}
+		</div>
+	</section>
 
-    <!-- Séries populaires -->
-    <section id="popular-tv" class="mt-12">
-        <h2 class="text-3xl font-semibold mb-6">Séries Populaires</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {% for tvShow in popularTvShows %}
-                <div class="bg-gray-800 text-white rounded-lg overflow-hidden">
-                    <img src="https://image.tmdb.org/t/p/w500{{ tvShow.poster_path }}" alt="{{ tvShow.name }}" class="w-full h-64 object-cover">
-                    <div class="p-4">
-                        <h3 class="text-xl font-semibold">{{ tvShow.name }}</h3>
-                        <p class="text-sm text-gray-400 mt-2">{{ tvShow.overview|slice(0, 150) ~ '...' }}</p>
-                    </div>
-                </div>
-            {% else %}
-                <p>Aucune série trouvée.</p>
-            {% endfor %}
-        </div>
+	<!-- Séries populaires -->
+	<section id="popular-tv" class="mt-12">
+		<h2 class="text-3xl font-semibold mb-6">Séries Populaires</h2>
+		<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+			{% for tvShow in popularTvShows %}
+				<div class="bg-gray-800 text-white rounded-lg overflow-hidden">
+					<img src="https://image.tmdb.org/t/p/w500{{ tvShow.poster_path }}" alt="{{ tvShow.name }}" class="w-full h-64 object-cover">
+					<div class="p-4">
+						<h3 class="text-xl font-semibold">{{ tvShow.name }}</h3>
+						<p class="text-sm text-gray-400 mt-2">{{ tvShow.overview|slice(0, 150) ~ '...' }}</p>
+					</div>
+				</div>
+			{% else %}
+				<p>Aucune série trouvée.</p>
+			{% endfor %}
+		</div>
 
-   
-    
-{% endblock %}
+
+	{% endblock %}
