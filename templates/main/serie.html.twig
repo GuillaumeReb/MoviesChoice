@@ -1,14 +1,46 @@
-<h1>Séries Populaires</h1>
+{# {% extends 'base.html.twig' %}
 
-<ul>
-	{% for serie in popularTvShows %}
-		<li>
-			<strong>{{ serie.name }}</strong>
-			({{ serie.first_air_date }})
-			<br>
-			<img src="https://image.tmdb.org/t/p/w200{{ serie.poster_path }}" alt="{{ serie.name }}">
-		</li>
+{% block title %}Films Populaires
+{% endblock %}
+
+{% block body %}
+<h1 class="text-3xl font-bold text-center mt-8 mb-6">Séries Populaires</h1>
+{% if popularMovies is not empty %}
+	<ul>
+		{% for serie in popularTvShows %}
+			<li>
+				<strong>{{ serie.name }}</strong>
+				({{ serie.first_air_date }})
+				<br>
+				<img src="https://image.tmdb.org/t/p/w200{{ serie.poster_path }}" alt="{{ serie.name }}">
+			</li>
+		{% else %}
+			<li>Aucune série trouvée.</li>
+		{% endfor %}
+	</ul> #}
+
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Séries Populaires
+{% endblock %}
+
+{% block body %}
+	<h1 class="text-3xl font-bold text-center mt-8 mb-6">🎬 Séries Populaires</h1>
+
+	{% if popularTvShows is not empty %}
+		<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 px-4">
+			{% for serie in popularTvShows %}
+				<div class="bg-white rounded-lg shadow hover:shadow-lg transition duration-300 overflow-hidden cursor-pointer">
+					<img src="https://image.tmdb.org/t/p/w200{{ serie.poster_path }}" alt="{{ serie.name }}" class="w-full h-64 object-cover transform hover:scale-105 transition duration-300">
+					<div class="p-4">
+						<h2 class="text-lg font-semibold truncate" title="{{ serie.name }}">{{ serie.name }}</h2>
+						<p class="text-sm text-gray-500">{{ serie.first_air_date }}</p>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
 	{% else %}
-		<li>Aucune série trouvée.</li>
-	{% endfor %}
-</ul>
+		<p class="text-center text-gray-500 mt-8">Aucun film trouvé.</p>
+	{% endif %}
+{% endblock %}
