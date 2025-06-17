@@ -5,16 +5,23 @@
 
 {% block body %}
 	<!-- Section de la bannière principale -->
-	<section class="relative bg-gray-900 text-black bg-cover bg-center h-[500px]" style="background-image: url('https://via.placeholder.com/1920x500');">
-		<div class="absolute inset-0 bg-black bg-opacity-50"></div>
-		<div class="relative container mx-auto h-full flex flex-col justify-center items-center text-center space-y-8 space-x-4">
-			<h1 class="text-4xl text-white md:text-6xl font-bold">Bienvenue sur MoviesChoice</h1>
-			<p class="text-lg text-white md:text-xl max-w-2xl">
+	<section
+		class="relative h-[400px] bg-cover bg-center pb-12" style="background-image: url('https://via.placeholder.com/1920x500');">
+		<!-- Overlay avec dégradé sombre -->
+		<div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-transparent"></div>
+
+		<!-- Contenu centré -->
+		<div class="relative container mx-auto h-full flex flex-col justify-center items-center text-center px-4">
+			<h1 class="text-5xl md:text-7xl font-extrabold text-white drop-shadow-lg">
+				Bienvenue sur MoviesChoice
+			</h1>
+			<p class="mt-4 max-w-3xl text-xl md:text-2xl font-semibold text-white drop-shadow-md">
 				Découvrez les derniers films, séries et émissions TV en un clic !
 			</p>
-			{# <a href="#popular" class="bg-red-500 hover:bg-red-600 text-black px-8 py-4 rounded-full text-lg font-semibold">
-							Voir les films populaires
-						</a> #}
+			<!-- Bouton éventuellement visible -->
+			{# <a href="#popular-movies" class="mt-8 inline-block bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-10 rounded-full shadow-lg transition">
+																														      Voir les films populaires
+																														    </a> #}
 		</div>
 	</section>
 
