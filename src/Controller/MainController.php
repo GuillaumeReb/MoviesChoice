@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use App\Service\TmdbService;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class MainController extends AbstractController
 {
@@ -56,4 +57,25 @@ public function series(): Response
         'popularTvShows' => $popularTvShows,
     ]);
 }
+
+// Pour SHOW
+
+#[Route('/movie/{id}', name: 'movie_show')]
+public function showMovie(int $id, HttpClientInterface $client): Response
+{
+    $response = $client->request('GET', "https://api.themoviedb.org/3/movie/$id", [
+        'query' => [
+            'api_key' => $_ENV['TMDB_API_KEY'],
+            'language' => 'fr-FR'
+        ]
+    ]);
+
+    $movie = $response->toArray();
+
+    return $this->render('main/filmshow.html.twig', [
+        'movie' => $movie
+    ]);
+}
+
+
 }

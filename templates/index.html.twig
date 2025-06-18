@@ -20,8 +20,8 @@
 			</p>
 			<!-- Bouton éventuellement visible -->
 			{# <a href="#popular-movies" class="mt-8 inline-block bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-10 rounded-full shadow-lg transition">
-								Voir les films populaires
-							</a> #}
+											Voir les films populaires
+										</a> #}
 		</div>
 	</section>
 
@@ -30,13 +30,15 @@
 		<h2 class="text-3xl font-semibold mb-6">Films Populaires</h2>
 		<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
 			{% for movie in popularMovies %}
-				<div class="bg-gray-800 text-white rounded-lg overflow-hidden">
-					<img src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}" alt="{{ movie.title }}" class="w-full h-64 object-cover">
-					<div class="p-4">
-						<h3 class="text-xl font-semibold">{{ movie.title }}</h3>
-						<p class="text-sm text-gray-400 mt-2">{{ movie.overview|slice(0, 150) ~ '...' }}</p>
+				<a href="{{ path('movie_show', {id: movie.id}) }}">
+					<div class="bg-gray-800 text-white rounded-lg overflow-hidden">
+						<img src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}" alt="{{ movie.title }}" class="w-full h-64 object-cover">
+						<div class="p-4">
+							<h3 class="text-xl font-semibold">{{ movie.title }}</h3>
+							<p class="text-sm text-gray-400 mt-2">{{ movie.overview|slice(0, 150) ~ '...' }}</p>
+						</div>
 					</div>
-				</div>
+				</a>
 			{% else %}
 				<p>Aucun film trouvé.</p>
 			{% endfor %}
