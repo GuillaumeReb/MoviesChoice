@@ -6,15 +6,18 @@
 
 {% block body %}
 	<div class="container mx-auto p-6">
-		<div
-			class="bg-white text-gray-900 rounded-xl shadow-lg p-6 flex flex-col md:flex-row gap-6">
-			<!-- Affiche du film -->
-			<img
-			src="https://image.tmdb.org/t/p/w342{{ movie.poster_path }}" alt="{{ movie.title }}" class="w-full md:w-1/4 rounded-lg shadow-md object-cover">
+		<div class="bg-white text-gray-900 rounded-xl shadow-lg p-6 flex flex-col md:flex-row gap-6 items-start">
+			<!-- Image réduite -->
+			{# <img src="https://image.tmdb.org/t/p/original{{ movie.poster_path }}" alt="{{ movie.title }}" class="w-40 md:w-48 max-h-72 flex-shrink-0 rounded-lg shadow-md object-cover"> #}
 
-			<!-- Détails -->
+
+				<div class="p-4 bg-gray-100"> <img src="https://image.tmdb.org/t/p/original{{ movie.poster_path }}" alt="{{ movie.title }}" class="w-40 rounded-lg shadow-md object-cover">
+			</div>
+
+			<!-- Texte -->
 			<div class="flex-1">
 				<h1 class="text-3xl font-bold mb-2">{{ movie.title }}</h1>
+
 				{% if movie.tagline %}
 					<p class="text-lg italic text-gray-500 mb-4">"{{ movie.tagline }}"</p>
 				{% endif %}
@@ -28,7 +31,6 @@
 						{{ movie.vote_average }}/10</li>
 				</ul>
 
-				<!-- Résumé -->
 				<p class="mt-4 text-justify leading-relaxed">{{ movie.overview }}</p>
 			</div>
 		</div>
