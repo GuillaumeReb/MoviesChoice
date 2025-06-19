@@ -58,7 +58,7 @@ public function series(): Response
     ]);
 }
 
-// Pour SHOW
+// Pour SHOWFilm
 
 #[Route('/movie/{id}', name: 'movie_show')]
 public function showMovie(int $id, HttpClientInterface $client): Response
@@ -77,5 +77,23 @@ public function showMovie(int $id, HttpClientInterface $client): Response
     ]);
 }
 
+// Pour SHOWSerie
+
+#[Route('/tv/{id}', name: 'tv_show')]
+public function showSerie(int $id, HttpClientInterface $client): Response
+{
+    $response = $client->request('GET', "https://api.themoviedb.org/3/tv/$id", [
+        'query' => [
+            'api_key' => $_ENV['TMDB_API_KEY'],
+            'language' => 'fr-FR'
+        ]
+    ]);
+
+    $serie = $response->toArray();
+
+    return $this->render('main/serieshow.html.twig', [
+        'tvShow' => $serie
+    ]);
+}
 
 }
