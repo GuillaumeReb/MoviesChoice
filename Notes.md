@@ -3,9 +3,6 @@ Voici un résumé clair de ce que tu dois faire pour mettre ton projet Symfony e
 ✅ 1. Préparer ton projet en local
 Tu dois d’abord compiler les assets et nettoyer les fichiers inutiles :
 
-bash
-Copier
-Modifier
 php bin/console cache:clear --env=prod
 php bin/console cache:warmup --env=prod
 
@@ -16,10 +13,6 @@ Cela va créer un dossier public/build optimisé, prêt à être mis en ligne.
 
 ✅ 2. Ce que tu dois envoyer sur ton serveur
 Tu dois transférer seulement les dossiers utiles au fonctionnement du site, par exemple :
-
-diff
-Copier
-Modifier
 
 - public/ ✅ (les fichiers accessibles sur le web)
 - var/ ✅ (vide ou avec permissions correctes)
@@ -40,9 +33,6 @@ Avoir PHP 8.1+ installé (avec les extensions nécessaires)
 
 Te placer à la racine de ton projet et faire :
 
-bash
-Copier
-Modifier
 composer install --no-dev --optimize-autoloader
 Cela va installer vendor/ si tu ne l’as pas transféré.
 
@@ -57,7 +47,6 @@ Sur un VPS : tu configures Apache ou Nginx pour ça.
 Sur un hébergement mutualisé : tu dois pouvoir définir le dossier racine (public_html, ou www) vers /public.
 
 ✅ 5. Uploader avec FileZilla ?
-Oui, tu peux utiliser FileZilla, mais :
 
 Transfère le bon dossier (voir ci-dessus)
 

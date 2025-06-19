@@ -19,10 +19,10 @@
 			{{ encore_entry_script_tags('app') }}
 		{% endblock %}
 	</head>
-	<body>
+	<body class="flex flex-col min-h-screen">
 		{% include "_partials/_nav.html.twig" %}
 
-		<main class="max-w-7xl mx-auto px-6 pb-6"> {% block body %}{% endblock %}
+		<main class="flex-grow max-w-7xl mx-auto px-6 pb-6"> {% block body %}{% endblock %}
 			</main>
 
 
