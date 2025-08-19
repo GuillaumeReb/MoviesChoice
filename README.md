@@ -32,3 +32,48 @@ Pensez à augmenter --level=1 après chaque validation.
 - Configure un serveur de développement local : `npm run dev`
 
 ---
+
+# Déploiement en sous-dossier
+
+## Configuration requise
+
+### 1. Webpack Encore
+
+```js
+// webpack.config.js
+Encore.setPublicPath("/sous-dossier/public/build").setManifestKeyPrefix(
+  "build/"
+);
+```
+
+### 2. .htaccess
+
+```apache
+# public/.htaccess
+RewriteEngine On
+RewriteBase /sous-dossier/public/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [L]
+```
+
+### 3. Templates
+
+```twig
+<!-- Utiliser les routes Symfony -->
+<a href="{{ path('app_home') }}">Accueil</a>
+```
+
+## Déploiement
+
+```bash
+npm run build
+# Upload via FTP
+# Accès : votresite.com/sous-dossier/public/
+```
+
+## Troubleshooting
+
+- **Pas de styles** → Vérifier `setPublicPath` et recompiler
+- **404 sur les routes** → Vérifier `RewriteBase` dans .htaccess
+- **Logo vers mauvaise page** → Utiliser `path()` au lieu de `/`
