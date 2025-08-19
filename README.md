@@ -1,79 +1,109 @@
 # MoviesChoice
 
-Site qui utilise l'API TMDB
+**📌 À propos du projet MoviesChoice**
 
-Symfony 7.1.8 version
+**🗓️ Date de création**
+📅 **Janvier 2025**
 
-### Server Symfony :
+**🏫 Réalisé dans le cadre de**
+🎓 **Projet perso**
 
-Pour démarrer ou arrêter le serveur Symfony :
+**🔗 Lien GitHub**
+📂 [\[Voir le code sur GitHub\]](https://github.com/GuillaumeReb/MoviesChoice)(#)
 
-- Démarrage : `symfony server:start`
-- Démarrage en arrière-plan : `symfony server:start -d`
-- Arrêt :`symfony server:stop`
+**🚀 Démo en ligne**
+🌐 [Voir la démo en ligne](https://guillaume-rebourgeon.fr/movie/public//)
 
-## Outils utilisés
+**🛠️ Technologies utilisées**
 
-### Code Sniffer
+- **Backend :** PHP 8, Symfony 7.1.8
+- **Frontend :** HTML, Tailwind CSS, JavaScript
+- **Build Tool :** Webpack Encore
+- **API :** TMDB (The Movie Database)
+- **Outils qualité :** PHP_CodeSniffer, PHPStan
+- **Serveur :** Apache, MySQL
 
-[PHP_CodeSniffer](https://github.com/PHPCSStandards/PHP_CodeSniffer/) permet de vérifier le style du code.
-Lancement de la commande de vérification :`vendor/bin/phpcs`
+**📖 Description du projet**
 
-### PHPStan
+MoviesChoice est une **application web de découverte de films et séries** qui utilise l'API TMDB pour afficher des informations détaillées sur les contenus cinématographiques.
 
-PHPStan est un outil d'analyse statique pour PHP qui détecte les erreurs de type et les bugs potentiels dans le code avant l'exécution, en analysant le code source pour assurer sa qualité et sa robustesse.\
-Lancement de la commande de vérification :
-`vendor/bin/phpstan analyse src --level 5` \
-Pensez à augmenter --level=1 après chaque validation.
+L'utilisateur peut :
 
-### Utile :
+- 🎬 **Parcourir les films** populaires et tendances
+- 📺 **Découvrir les séries** du moment
+- 🔍 **Consulter les détails** de chaque film/série (synopsis, casting, notes...)
+- 📱 **Naviguer facilement** grâce à une interface responsive
 
-- Vidage du cache : `Php bin/console cache:clear --env=dev`
-- Configure un serveur de développement local : `npm run dev`
+**🎯 Compétences développées**
+
+- **Intégration d'API REST** : Consommation de l'API TMDB
+- **Framework Symfony** : Routing, contrôleurs, templates Twig
+- **Responsive Design** : Utilisation de Tailwind CSS
+- **Webpack Encore** : Gestion des assets et compilation
+- **Déploiement** : Configuration serveur, gestion des environnements
+- **Qualité de code** : PHP_CodeSniffer, PHPStan pour maintenir un code propre
+
+**🏗️ Architecture technique**
+
+```
+src/
+├── Controller/     # Logique métier
+├── Entity/         # Modèles de données
+├── Service/        # Services (API calls, etc.)
+└── ...
+
+templates/          # Vues Twig
+assets/            # CSS/JS sources
+public/build/      # Assets compilés
+```
+
+**💡 Défis techniques relevés**
+
+- **Configuration en sous-dossier** : Adaptation des chemins pour un déploiement en sous-répertoire
+- **Gestion des environnements** : Configuration différente local/production
+- **Optimisation des assets** : Compilation conditionnelle selon l'environnement
+- **Intégration API** : Gestion des appels asynchrones et affichage des données
+
+**💡 Retour personnel**
+
+Ce projet m'a permis de **maîtriser Symfony** dans un contexte réel avec intégration d'API externe. La gestion du **déploiement en sous-dossier** m'a fait comprendre l'importance de la configuration d'environnement. L'utilisation de **Tailwind CSS** m'a apporté une nouvelle approche du CSS utilitaire, très efficace pour le responsive design.
 
 ---
 
-# Déploiement en sous-dossier
+## 🚀 Installation & Lancement
 
-## Configuration requise
+### Prérequis
 
-### 1. Webpack Encore
+- PHP 8+
+- Composer
+- Node.js & npm
+- Symfony CLI
 
-```js
-// webpack.config.js
-Encore.setPublicPath("/sous-dossier/public/build").setManifestKeyPrefix(
-  "build/"
-);
-```
-
-### 2. .htaccess
-
-```apache
-# public/.htaccess
-RewriteEngine On
-RewriteBase /sous-dossier/public/
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^ index.php [L]
-```
-
-### 3. Templates
-
-```twig
-<!-- Utiliser les routes Symfony -->
-<a href="{{ path('app_home') }}">Accueil</a>
-```
-
-## Déploiement
+### Installation
 
 ```bash
-npm run build
-# Upload via FTP
-# Accès : votresite.com/sous-dossier/public/
+git clone [votre-repo]
+cd MoviesChoice
+composer install
+npm install
 ```
 
-## Troubleshooting
+### Configuration
 
-- **Pas de styles** → Vérifier `setPublicPath` et recompiler
-- **404 sur les routes** → Vérifier `RewriteBase` dans .htaccess
-- **Logo vers mauvaise page** → Utiliser `path()` au lieu de `/`
+```bash
+# Copier et configurer l'environnement
+cp .env .env.local
+# Ajouter votre clé API TMDB dans .env.local
+```
+
+### Lancement
+
+```bash
+# Assets
+npm run watch
+
+# Serveur Symfony
+symfony server:start
+```
+
+**🌐 Accès :** `localhost:8000`
