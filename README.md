@@ -9,7 +9,7 @@
 🎓 **Projet perso**
 
 **🔗 Lien GitHub**
-📂 [\[Voir le code sur GitHub\]](https://github.com/GuillaumeReb/MoviesChoice)(#)
+📂 [Voir le code sur GitHub](https://github.com/GuillaumeReb/MoviesChoice)
 
 **🚀 Démo en ligne**
 🌐 [Voir la démo en ligne](https://guillaume-rebourgeon.fr/movie/public/)
