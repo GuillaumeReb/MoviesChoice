@@ -54,4 +54,19 @@ class TmdbService
         // Retourne les résultats sous forme de tableau
         return $response->toArray()['results'] ?? [];
     }
+
+    //Barre de recherche
+    public function search(string $query): array
+{
+    $response = $this->client->request('GET', 'https://api.themoviedb.org/3/search/multi', [
+        'query' => [
+            'api_key' => $this->apiKey,
+            'language' => 'fr-FR',
+            'query' => $query,
+        ],
+    ]);
+
+    return $response->toArray();
+}
+
 }

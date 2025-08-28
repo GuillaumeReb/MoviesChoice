@@ -96,4 +96,22 @@ public function showSerie(int $id, HttpClientInterface $client): Response
     ]);
 }
 
+//Barre de recherche
+#[Route('/search', name: 'app_search')]
+public function search(\Symfony\Component\HttpFoundation\Request $request): Response
+{
+    $query = $request->query->get('q'); // récupère le terme de recherche
+    $results = [];
+
+    if ($query) {
+        $results = $this->tmdbService->search($query);
+    }
+
+    return $this->render('main/search.html.twig', [
+        'query' => $query,
+        'results' => $results['results'] ?? [],
+    ]);
+}
+
+
 }

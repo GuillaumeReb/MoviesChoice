@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Résultats de recherche{% endblock %}
+
+{% block body %}
+    <h1 class="text-3xl font-bold text-center mt-8 mb-6">
+        🔍 Résultats{% if query %} pour "{{ query }}"{% endif %}
+    </h1>
+
+    {% if results is not empty %}
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 px-4">
+            {% for item in results %}
+                {% if item.media_type in ['movie', 'tv'] %}
+                    <a href="{% if item.media_type == 'movie' %}
+                                {{ path('movie_show', {id: item.id}) }}
+                             {% else %}
+                                {{ path('tv_show', {id: item.id}) }}
+                             {% endif %}">
+                        <div class="bg-white rounded-lg shadow hover:shadow-lg transition duration-300 overflow-hidden cursor-pointer">
+                            {% if item.poster_path %}
+                                <img src="https://image.tmdb.org/t/p/w300{{ item.poster_path }}"
+                                     alt="{{ item.title ?? item.name }}"
+                                     class="w-full h-64 object-cover transform hover:scale-105 transition duration-300">
+                            {% else %}
+                                <div class="w-full h-64 bg-gray-200 flex items-center justify-center text-gray-500">
+                                    Pas d'image
+                                </div>
+                            {% endif %}
+
+                            <div class="p-4">
+                                <h2 class="text-lg font-semibold truncate" title="{{ item.title ?? item.name }}">
+                                    {{ item.title ?? item.name }}
+                                </h2>
+                                <p class="text-sm text-gray-500">
+                                    {% if item.media_type == 'movie' %}
+                                        {{ item.release_date|default('N/A') }}
+                                    {% else %}
+                                        {{ item.first_air_date|default('N/A') }}
+                                    {% endif %}
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                {% endif %}
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="text-center text-gray-500 mt-8">Aucun résultat trouvé.</p>
+    {% endif %}
+{% endblock %}
