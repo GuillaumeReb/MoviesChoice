@@ -86,6 +86,7 @@ git clone [votre-repo]
 cd MoviesChoice
 composer install
 npm install
+npm run dev
 ```
 
 ### Configuration
