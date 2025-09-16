@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+
+		{% block stylesheets %}
+			{{ encore_entry_link_tags('app') }}
+		{% endblock %}
+
+		{% block javascripts %}
+			{{ encore_entry_script_tags('app') }}
+		{% endblock %}
+
+		<style>
+			body {
+				font-family: 'Inter', sans-serif;
+				background-color: #f9fafb;
+				color: #111827;
+			}
+			.card {
+				transition: transform 0.2s, box-shadow 0.2s;
+			}
+			.card:hover {
+				transform: translateY(-3px);
+				box-shadow: 0 10px 15px rgba(0, 0, 0, 0.08);
+			}
+			button {
+				transition: background-color 0.2s, transform 0.2s;
+			}
+			button:hover {
+				transform: translateY(-1px);
+			}
+		</style>
+	</head>
+	<body class="flex flex-col min-h-screen">
+
+		{% include "_partials/_nav.html.twig" %}
+
+		<main
+			class="flex-1 px-6 py-10 space-y-12">
+
+			<!-- Header -->
+			<div class="max-w-6xl mx-auto bg-white p-8 rounded-xl shadow">
+				<div class="flex flex-col md:flex-row justify-between items-center gap-4">
+					<h1 class="text-3xl font-bold text-gray-900">
+						Bonjour,
+						{{ user.userIdentifier }}
+						!
+					</h1>
+					<a href="{{ path('app_logout') }}" class="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg text-sm font-medium shadow">
+						Se déconnecter
+					</a>
+				</div>
+			</div>
+
+			<!-- Stats rapides -->
+			<div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-8">
+				<div class="bg-white p-8 rounded-xl shadow card flex items-center gap-4">
+					<div class="bg-blue-100 p-3 rounded-full">
+						<svg class="h-8 w-8 text-blue-600" fill="none" viewbox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2h4a1 1 0 011 1v1a1 1 0 01-1 1H3a1 1 0 01-1-1V5a1 1 0 011-1h4zM3 7v13a2 2 0 002 2h14a2 2 0 002-2V7H3z"/>
+						</svg>
+					</div>
+					<div>
+						<p class="text-gray-500 font-medium">Mes DVD</p>
+						<p class="text-2xl font-bold text-gray-900">0</p>
+					</div>
+				</div>
+
+				<div class="bg-white p-8 rounded-xl shadow card flex items-center gap-4">
+					<div class="bg-pink-100 p-3 rounded-full">
+						<svg class="h-8 w-8 text-pink-600" fill="none" viewbox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+						</svg>
+					</div>
+					<div>
+						<p class="text-gray-500 font-medium">Favoris</p>
+						<p class="text-2xl font-bold text-gray-900">0</p>
+					</div>
+				</div>
+
+				<div class="bg-white p-8 rounded-xl shadow card flex items-center gap-4">
+					<div class="bg-yellow-100 p-3 rounded-full">
+						<svg class="h-8 w-8 text-yellow-600" fill="none" viewbox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+						</svg>
+					</div>
+					<div>
+						<p class="text-gray-500 font-medium">À regarder</p>
+						<p class="text-2xl font-bold text-gray-900">0</p>
+					</div>
+				</div>
+			</div>
+
+			<!-- Sections principales -->
+			<div
+				class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+				<!-- Mes DVD récents -->
+				<div class="bg-white shadow rounded-xl card p-8 flex flex-col justify-between">
+					<div class="mb-6">
+						<h3 class="text-xl font-semibold text-gray-900 mb-2">Mes DVD récents</h3>
+						<p class="text-gray-500 text-sm">Les derniers DVD ajoutés à votre collection</p>
+					</div>
+					<div class="text-center py-6">
+						<p class="text-gray-400 mb-4">Aucun DVD pour le moment</p>
+						<button class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg shadow-md font-medium">
+							Ajouter un DVD
+						</button>
+					</div>
+				</div>
+
+				<!-- Mes favoris -->
+				<div class="bg-white shadow rounded-xl card p-8 flex flex-col justify-between">
+					<div class="mb-6">
+						<h3 class="text-xl font-semibold text-gray-900 mb-2">Mes favoris</h3>
+						<p class="text-gray-500 text-sm">Vos films préférés</p>
+					</div>
+					<div class="text-center py-6">
+						<p class="text-gray-400 mb-4">Aucun favori pour le moment</p>
+						<button class="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg shadow-md font-medium">
+							Parcourir les films
+						</button>
+					</div>
+				</div>
+
+			</div>
+
+		</main>
+
+		{% include "_partials/_footer.html.twig" %}
+	</body>
+</html>
