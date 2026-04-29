@@ -1,5 +1,7 @@
 # MoviesChoice
 
+![Aperçu du site](imgagesReadme/ReadMe_Accueil.png)
+
 **📌 À propos du projet MoviesChoice**
 
 **🗓️ Date de création**
