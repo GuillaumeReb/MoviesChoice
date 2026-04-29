@@ -46,21 +46,20 @@ L'utilisateur peut :
 - **Déploiement** : Configuration serveur, gestion des environnements
 - **Qualité de code** : PHP_CodeSniffer, PHPStan pour maintenir un code propre
 
-**Aperçu**
+**📸 Aperçu**
+
+### Carte
 
 ![Aperçu du site](imagesReadme/ReadMe_CarteFilm.png)
 
 <details>
   <summary>📸 Cliquez ici pour voir plus de captures d'écran</summary>
-  
-  ### Carte
-  ![Carte](imagesReadme/ReadMe_CarteFilm.png)
 
 ### Vue Films
 
 ![Carte](imagesReadme/ReadMe_FilmsPopulaires.png)
 
-### Vue Films
+### Vue Séries
 
 ![Carte](imagesReadme/ReadMe_SeriesPopulaires.png)
 
