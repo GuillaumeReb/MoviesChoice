@@ -5,7 +5,7 @@
 **📌 À propos du projet MoviesChoice**
 
 **🗓️ Date de création**
-📅 **Janvier 2025**
+📅 **Mars 2024**
 
 **🏫 Réalisé dans le cadre de**
 🎓 **Projet perso**
