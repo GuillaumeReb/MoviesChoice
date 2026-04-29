@@ -1,6 +1,6 @@
 # MoviesChoice
 
-![Aperçu du site](imgagesReadme/ReadMe_Accueil.png)
+![Aperçu du site](imagesReadme/ReadMe_Accueil.png)
 
 **📌 À propos du projet MoviesChoice**
 
